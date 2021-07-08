@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/mission 1.wav-39fb4e54bcc8f2c244e857858c4c659e.sample"
+
+[deps]
+
+source_file="res://assets/music/mission 1.wav"
+dest_files=[ "res://.import/mission 1.wav-39fb4e54bcc8f2c244e857858c4c659e.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

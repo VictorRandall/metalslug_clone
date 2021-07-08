@@ -1,0 +1,93 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://assets/sprites/normal map(only shape).png" type="Texture" id=1]
+[ext_resource path="res://assets/sprites/normal map.png" type="Texture" id=2]
+[ext_resource path="res://assets/sprites/Light2.png" type="Texture" id=3]
+
+[sub_resource type="Shader" id=2]
+code = "shader_type canvas_item;
+uniform sampler2D specularTexture;
+
+uniform vec2 screen_size;
+uniform float diffuse_intensity : hint_range(0,1) = 0.6;
+uniform float specular_intensity : hint_range(0,1) = 0.6;
+uniform float specular_scatter : hint_range(0,512) = 32;
+uniform vec4 specular_color : hint_color = vec4(0.0);
+
+void light(){
+	vec4 spec_color = specular_color;
+	if (spec_color == vec4(0.0))
+		spec_color = LIGHT_COLOR;
+
+	vec3 viewDir = normalize(vec3(screen_size/2.0,500.0)-FRAGCOORD.xyz);
+	vec3 reflectDir = reflect(normalize(vec3(LIGHT_VEC,-LIGHT_HEIGHT)), NORMAL);
+	vec4 specular_map = texture(specularTexture,UV);
+	float spec = pow(max(dot(viewDir, reflectDir), 0.0), specular_scatter);
+
+    vec3 specular =   specular_intensity * spec * spec_color.xyz * specular_map.x;
+
+	LIGHT = vec4(vec3(specular),1.0)+diffuse_intensity*LIGHT;
+}"
+
+[sub_resource type="ShaderMaterial" id=3]
+shader = SubResource( 2 )
+shader_param/screen_size = null
+shader_param/diffuse_intensity = 0.6
+shader_param/specular_intensity = 0.6
+shader_param/specular_scatter = 32.0
+shader_param/specular_color = Color( 0, 0, 0, 0 )
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Light2D
+
+
+# Declare member variables here. Examples:
+var a = OpenSimplexNoise.new()
+# var b = \"text\"
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	if Input.is_action_pressed(\"ui_left\"):
+		position.x -= 1
+	elif Input.is_action_pressed(\"ui_right\"):
+		position.x += 1
+	if Input.is_action_pressed(\"ui_up\"):
+		position.y -= 1
+	elif Input.is_action_pressed(\"ui_down\"):
+		position.y += 1
+"
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Sprite" type="Sprite" parent="."]
+material = SubResource( 3 )
+position = Vector2( 186.5, 136 )
+texture = ExtResource( 1 )
+normal_map = ExtResource( 2 )
+
+[node name="Light2D" type="Light2D" parent="."]
+position = Vector2( 196, 113 )
+texture = ExtResource( 3 )
+range_height = 12.0
+shadow_enabled = true
+shadow_color = Color( 0, 0, 0, 1 )
+script = SubResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Light2" type="Sprite" parent="Light2D"]
+modulate = Color( 1, 1, 1, 0.0745098 )
+z_index = -1
+texture = ExtResource( 3 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 201, 156 )
+current = true
+zoom = Vector2( 0.5, 0.5 )

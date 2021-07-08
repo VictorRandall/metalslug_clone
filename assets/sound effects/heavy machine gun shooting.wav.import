@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/heavy machine gun shooting.wav-50266480a7fd9e7efc71f7f30f51eeb3.sample"
+
+[deps]
+
+source_file="res://assets/sound effects/heavy machine gun shooting.wav"
+dest_files=[ "res://.import/heavy machine gun shooting.wav-50266480a7fd9e7efc71f7f30f51eeb3.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
