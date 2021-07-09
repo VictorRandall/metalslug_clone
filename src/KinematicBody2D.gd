@@ -1,30 +1,32 @@
 extends KinematicBody2D
 
 var motion:Vector2 = Vector2()
-var gravity:float = 80
+var gravity:float = 2
 var speed:float = 110
 var jump_height:float = 130
 
 enum states{
-	none
+	none #0
 	
-	turning
-	crouching
+	idle #1
+	running #2
+	jumping #3
+	jumping_moving #4
+	stop #5
 	
-	idle
-	running
-	jumping
-	jumping_moving
+	shooting #6
+	stabing #7
+	throw_bomb #8
 	
-	shooting
-	stabing
-	throw_bomb
+	turning #9
+	crouching #10
 }
 
 var dir:Vector2
 
-onready var anim:Node = get_node("AnimationPlayer")
-onready var anim2:Node = get_node("AnimationPlayer2")
+onready var BA:Node = get_node("BetterAnim")
+onready var anim:Node = get_node("BetterAnim/AP")
+onready var anim2:Node = get_node("BetterAnim/AP2")
 onready var sprite:Node = get_node("Sprite")
 onready var sprite2:Node = get_node("Sprite/Sprite")
 
@@ -33,11 +35,12 @@ func _ready():
 
 func _process(delta):
 	#debug
-	var text:String = "motion = " + str(motion) + "\nposition = " + str(position) + "\ndir = " + str(dir) + "\ncurrent anim playing (torso) = " + str(anim.current_animation) + "\ncurrent anim playing (legs) = " + str(anim2.current_animation)
+	var text:String = "motion = " + str(motion) + "\nposition = " + str(position) + "\ndir = " + str(dir) + "\ncurrent anim playing (torso) = " + str(anim.current_animation) + "\ncurrent anim playing (legs) = " + str(anim2.current_animation) + "\nanim state = " + str(BA.anim_state) + "\nanim attack = " + str(BA.anim_attack) + "\nanim moviment = " + str(BA.anim_moviment)
 	get_parent().get_node("UI/Control/Label").text = text
 	
 	#moviment and attack
 	motion = Vector2(float(int(motion.x)),float(int(motion.y)))
+#	position = Vector2(float(int(position.x)),float(int(position.y)))
 	var motion_dir:float = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
 	
 	if is_on_floor():
@@ -57,7 +60,7 @@ func _process(delta):
 		else:
 			$BetterAnim.anim_moviment = states.idle
 	else:
-		motion.y += gravity * delta# * delta
+		motion.y += gravity# * delta# * delta
 		if motion.x == 0:
 			$BetterAnim.anim_moviment = states.jumping
 		else:

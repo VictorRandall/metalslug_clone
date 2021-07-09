@@ -10,12 +10,12 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Node",
-"class": "Better_Anim",
+"class": "BetterAnim",
 "language": "GDScript",
 "path": "res://src/better_anim.gd"
 } ]
 _global_script_class_icons={
-"Better_Anim": ""
+"BetterAnim": ""
 }
 
 [application]
@@ -28,7 +28,6 @@ config/icon="res://icon.png"
 
 window/size/width=403
 window/size/height=316
-window/size/fullscreen=true
 window/stretch/mode="viewport"
 window/stretch/aspect="keep"
 
