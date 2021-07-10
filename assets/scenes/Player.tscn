@@ -3,7 +3,7 @@
 [ext_resource path="res://src/KinematicBody2D.gd" type="Script" id=1]
 [ext_resource path="res://assets/sprites/Player.png" type="Texture" id=2]
 [ext_resource path="res://assets/sprites/Player(legs).png" type="Texture" id=3]
-[ext_resource path="res://src/better_anim.gd" type="Script" id=4]
+[ext_resource path="res://src/BetterAnim(class).gd" type="Script" id=4]
 
 [sub_resource type="RayShape2D" id=1]
 length = 12.0
@@ -177,6 +177,7 @@ z_index = 5
 texture = ExtResource( 2 )
 hframes = 50
 vframes = 2
+frame = 1
 
 [node name="Sprite" type="Sprite" parent="Sprite"]
 show_behind_parent = true
@@ -195,11 +196,13 @@ z_index = 6
 shape = SubResource( 2 )
 
 [node name="BetterAnim" type="Node" parent="."]
+pause_mode = 2
 script = ExtResource( 4 )
 anim_nodes = [ NodePath("AP"), NodePath("AP2") ]
+anim_play_state = [ 0, 0 ]
+anim_finished = [ false, false ]
 
 [node name="AP" type="AnimationPlayer" parent="BetterAnim"]
-autoplay = "01"
 anims/01 = SubResource( 3 )
 anims/2 = SubResource( 4 )
 anims/3 = SubResource( 5 )

@@ -10,11 +10,17 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Node",
+"class": "AI",
+"language": "GDScript",
+"path": "res://src/AI(class).gd"
+}, {
+"base": "Node",
 "class": "BetterAnim",
 "language": "GDScript",
-"path": "res://src/better_anim.gd"
+"path": "res://src/BetterAnim(class).gd"
 } ]
 _global_script_class_icons={
+"AI": "",
 "BetterAnim": ""
 }
 

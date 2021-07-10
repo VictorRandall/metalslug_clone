@@ -21,7 +21,6 @@ enum states{
 	turning #9
 	crouching #10
 }
-
 var dir:Vector2
 
 onready var BA:Node = get_node("BetterAnim")

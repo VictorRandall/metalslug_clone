@@ -15,8 +15,8 @@ enum{
 	loop
 	end
 }
-export(Array, int) var anim
-export(Array, bool) var anim_finished
+export(Array, int) var anim_play_state = []
+export(Array, bool) var anim_finished = []
 
 func _ready():
 	for i in range(anim_nodes.size()):
@@ -32,37 +32,44 @@ func _process(delta):
 		else:
 			anim_name = str(anim_state) + str(anim_moviment)
 		
-		match anim:
+		match anim_play_state[i]:
+			
 			start:
 				if get_node(anim_nodes[i]).has_animation(anim_name + "s"):
 					get_node(anim_nodes[i]).play(anim_name + "s")
+					if anim_finished[i] == true:
+						anim_play_state[i] = loop
 			loop:
 				if get_node(anim_nodes[i]).has_animation(anim_name):
-					get_node(anim_nodes[i]).play(anim_name)
+					if get_node(anim_nodes[i]).is_playing():
+						get_node(anim_nodes[i]).play(anim_name)
+					if anim_finished[i] == true:
+						anim_play_state[i] = end
 			end:
 				if get_node(anim_nodes[i]).has_animation(anim_name + "e"):
 					get_node(anim_nodes[i]).play(anim_name + "e")
 
 func _animation0_started(anim_name):
-	anim_finished = false
+	anim_finished[0] = false
+	print("pienspooit")
 
 func _animation1_started(anim_name):
-	pass
+	anim_finished[1] = false
 
 func _animation2_started(anim_name):
-	pass
+	anim_finished[2] = false
 
 func _animation3_started(anim_name):
-	pass
+	anim_finished[3] = false
 
 func _animation0_finished(anim_name):
-	pass
+	anim_finished[0] = true
 
 func _animation1_finished(anim_name):
-	pass
+	anim_finished[1] = true
 
 func _animation2_finished(anim_name):
-	pass
+	anim_finished[2] = true
 
 func _animation3_finished(anim_name):
-	pass
+	anim_finished[3] = true
