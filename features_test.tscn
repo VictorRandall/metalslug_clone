@@ -4,7 +4,7 @@
 [ext_resource path="res://assets/sprites/normal map.png" type="Texture" id=2]
 [ext_resource path="res://assets/sprites/Light2.png" type="Texture" id=3]
 
-[sub_resource type="Shader" id=2]
+[sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
 uniform sampler2D specularTexture;
 
@@ -29,15 +29,15 @@ void light(){
 	LIGHT = vec4(vec3(specular),1.0)+diffuse_intensity*LIGHT;
 }"
 
-[sub_resource type="ShaderMaterial" id=3]
-shader = SubResource( 2 )
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
 shader_param/screen_size = null
 shader_param/diffuse_intensity = 0.6
 shader_param/specular_intensity = 0.6
 shader_param/specular_scatter = 32.0
 shader_param/specular_color = Color( 0, 0, 0, 0 )
 
-[sub_resource type="GDScript" id=1]
+[sub_resource type="GDScript" id=3]
 script/source = "extends Light2D
 
 
@@ -66,7 +66,7 @@ func _process(delta):
 [node name="Node2D" type="Node2D"]
 
 [node name="Sprite" type="Sprite" parent="."]
-material = SubResource( 3 )
+material = SubResource( 2 )
 position = Vector2( 186.5, 136 )
 texture = ExtResource( 1 )
 normal_map = ExtResource( 2 )
@@ -77,7 +77,7 @@ texture = ExtResource( 3 )
 range_height = 12.0
 shadow_enabled = true
 shadow_color = Color( 0, 0, 0, 1 )
-script = SubResource( 1 )
+script = SubResource( 3 )
 __meta__ = {
 "_edit_group_": true
 }

@@ -1,11 +1,55 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://src/AI(class).gd" type="Script" id=1]
-[ext_resource path="res://assets/scenes/Rebel_Soldier.gd" type="Script" id=2]
+[ext_resource path="res://src/classes/AI(class).gd" type="Script" id=1]
+[ext_resource path="res://src/Rebel_Soldier.gd" type="Script" id=2]
+[ext_resource path="res://src/classes/BetterAnim(class).gd" type="Script" id=3]
+[ext_resource path="res://assets/sprites/Rebel Soldier.png" type="Texture" id=4]
+
+[sub_resource type="Shader" id=2]
+code = "shader_type canvas_item;"
+
+[sub_resource type="ShaderMaterial" id=3]
+shader = SubResource( 2 )
+
+[sub_resource type="Animation" id=1]
+resource_name = "idle"
+length = 0.55
+loop = true
+step = 0.15
+tracks/0/type = "value"
+tracks/0/path = NodePath("../Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.15, 0.3, 0.45 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 1 ]
+}
 
 [node name="KinematicBody2D2" type="KinematicBody2D"]
 script = ExtResource( 2 )
 
+[node name="Sprite" type="Sprite" parent="."]
+material = SubResource( 3 )
+texture = ExtResource( 4 )
+hframes = 50
+vframes = 2
+frame = 2
+
 [node name="AI" type="Node" parent="."]
 script = ExtResource( 1 )
 input = [ "" ]
+
+[node name="BetterAnim" type="Node" parent="."]
+script = ExtResource( 3 )
+anim_nodes = [ NodePath("AP") ]
+playing = true
+anim_play_state = [ 1 ]
+anim_finished = [ 1 ]
+
+[node name="AP" type="AnimationPlayer" parent="BetterAnim"]
+autoplay = "idle"
+anims/idle = SubResource( 1 )

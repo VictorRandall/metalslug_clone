@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Rebel Soldier.png-cf6595b31339e273b813e9220be44986.stex"
+path="res://.import/TODO_Manager_Logo.png-e07d7ec75201c66b732ef87ec1bece15.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/Rebel Soldier.png"
-dest_files=[ "res://.import/Rebel Soldier.png-cf6595b31339e273b813e9220be44986.stex" ]
+source_file="res://addons/Todo_Manager/doc/images/TODO_Manager_Logo.png"
+dest_files=[ "res://.import/TODO_Manager_Logo.png-e07d7ec75201c66b732ef87ec1bece15.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
@@ -30,5 +30,5 @@ process/HDR_as_SRGB=false
 process/invert_color=false
 stream=false
 size_limit=0
-detect_3d=false
+detect_3d=true
 svg/scale=1.0

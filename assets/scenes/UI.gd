@@ -1,21 +1,20 @@
-extends Node
-class_name AI
+extends CanvasLayer
+
 
 # Declare member variables here. Examples:
-export(Array) var input
-export(String) var string
-var motion_dir:Vector2
-enum{
-	throw_bomb
-	stab
-}
-signal output(vec, action)
+# var a = 2
+# var b = "text"
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
 
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	emit_signal("output", motion_dir)
+#func _process(delta):
+#	pass
+
+
+func _on_KinematicBody2D_text_update(text):
+	$Control/Label.text = text

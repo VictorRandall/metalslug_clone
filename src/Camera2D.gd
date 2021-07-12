@@ -13,5 +13,6 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	global_position = Vector2(float(int(global_position.x)),float(int(global_position.y)))
-	global_position = get_parent().get_node("KinematicBody2D").global_position
+#	global_position = Vector2(float(int(global_position.x)),float(int(global_position.y)))
+#	global_position = get_parent().get_node("KinematicBody2D").global_position
+	pass
