@@ -5,14 +5,13 @@
 [ext_resource path="res://src/classes/BetterAnim(class).gd" type="Script" id=3]
 [ext_resource path="res://assets/sprites/Rebel Soldier.png" type="Texture" id=4]
 
-[sub_resource type="Shader" id=2]
+[sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;"
 
-[sub_resource type="ShaderMaterial" id=3]
-shader = SubResource( 2 )
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
 
-[sub_resource type="Animation" id=1]
-resource_name = "idle"
+[sub_resource type="Animation" id=3]
 length = 0.55
 loop = true
 step = 0.15
@@ -33,7 +32,8 @@ tracks/0/keys = {
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
-material = SubResource( 3 )
+material = SubResource( 2 )
+position = Vector2( -0.500001, 0.5 )
 texture = ExtResource( 4 )
 hframes = 50
 vframes = 2
@@ -47,9 +47,9 @@ input = [ "" ]
 script = ExtResource( 3 )
 anim_nodes = [ NodePath("AP") ]
 playing = true
-anim_play_state = [ 1 ]
+anim_play_state = [ 1, 0 ]
 anim_finished = [ 1 ]
 
 [node name="AP" type="AnimationPlayer" parent="BetterAnim"]
 autoplay = "idle"
-anims/idle = SubResource( 1 )
+anims/idle = SubResource( 3 )

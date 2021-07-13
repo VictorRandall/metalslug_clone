@@ -1,7 +1,7 @@
 tool
 extends Node
 class_name AI
-#TODO: fazer essa IA funcionar, pq eu n fasso a minima ideia de como q faz uma
+#REMOVELATER: this class will soon be useless
 
 # Declare member variables here. Examples:
 export(Array) var input
