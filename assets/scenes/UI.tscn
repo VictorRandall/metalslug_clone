@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://assets/Minecraftia-Regular.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://assets/scenes/UI.gd" type="Script" id=2]
+[ext_resource path="res://src/UI.gd" type="Script" id=2]
 
 [sub_resource type="DynamicFont" id=1]
 size = 8

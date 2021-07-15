@@ -44,13 +44,20 @@ func shoot():
 	get_parent().add_child(bullet)
 	bullet.position = get_node("Sprite/Position2D").global_position
 
+func bomb():
+	var bomb_scene = preload("res://assets/scenes/bomb.tscn")
+	var bomb = bomb_scene.instance()
+	bomb.init()
+	get_parent().add_child(bomb)
+	bomb.position = get_node("Sprite/Position2D").global_position
+
 func _process(delta):
 	#debug
 	var text:String = "motion = " + str(motion) + "\nposition = " + str(position) + "\ndir = " + str(dir) + "\ncurrent anim playing (torso) = " + str(anim.current_animation) + "\ncurrent anim playing (legs) = " + str(anim2.current_animation) + "\nanim state = " + str(BA.anim_state) + "\nanim torso = " + str(BA.anim_2part) + "\nanim leg = " + str(BA.anim_part)
 	emit_signal("text_update", text)
 	
 	#moviment
-#	motion = Vector2(float(int(motion.x)),float(int(motion.y)))
+	motion = Vector2(float(int(motion.x)),float(int(motion.y)))
 #	position = Vector2(float(int(position.x)),float(int(position.y)))
 	var motion_dir:Vector2
 	if Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left") != 0:
@@ -87,7 +94,7 @@ func _process(delta):
 			BA.anim_part = states.jumping
 		else:
 			BA.anim_part = states.jumping_moving
-#		motion.x = motion_dir.x * speed
+		motion.x = motion_dir.x * speed
 		motion.y += gravity * delta
 	#attack
 	if Input.is_action_pressed("ui_shoot"):
