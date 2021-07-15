@@ -305,7 +305,9 @@ position = Vector2( 0, -19 )
 z_index = 6
 shape = SubResource( 2 )
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." groups=[
+"player",
+]]
 position = Vector2( 0, -13 )
 z_index = 5
 __meta__ = {
@@ -321,7 +323,7 @@ pause_mode = 2
 script = ExtResource( 4 )
 anim_nodes = [ NodePath("AP"), NodePath("AP2") ]
 playing = true
-anim_play_state = [ 1, 1, 0, 0, 0, 0, 0, 0 ]
+anim_play_state = [ 1, 1, 0, 0, 0, 0, 0, 0, 0, 0 ]
 anim_finished = [ false, false ]
 
 [node name="AP" type="AnimationPlayer" parent="BetterAnim"]

@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://assets/scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/scenes/UI.tscn" type="PackedScene" id=2]
 [ext_resource path="res://TEST.png" type="Texture" id=3]
 [ext_resource path="res://src/Camera2D.gd" type="Script" id=4]
 [ext_resource path="res://assets/scenes/Rebel_Soldier.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/tank.gd" type="Script" id=6]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
@@ -35,7 +36,7 @@ points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
 [node name="Node2D" type="Node2D"]
 
 [node name="KinematicBody2D" parent="." instance=ExtResource( 1 )]
-position = Vector2( 0, -19 )
+position = Vector2( 0, -5 )
 
 [node name="Camera2D" type="Camera2D" parent="KinematicBody2D"]
 offset = Vector2( 0, -14 )
@@ -55,5 +56,8 @@ tile_data = PoolIntArray( -1048540, 0, 0, -1048539, 0, 0, -1048538, 0, 0, -98300
 
 [node name="KinematicBody2D2" parent="." instance=ExtResource( 5 )]
 position = Vector2( 118, -28 )
+
+[node name="KinematicBody2D3" type="KinematicBody2D" parent="."]
+script = ExtResource( 6 )
 
 [connection signal="text_update" from="KinematicBody2D" to="UI" method="_on_KinematicBody2D_text_update"]

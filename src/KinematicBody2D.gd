@@ -1,5 +1,11 @@
 extends KinematicBody2D
 
+#FIXME: fix the jumping animation problem
+#TODO: make him have all types of attack
+#TODO: make the player attack enemys and get hit
+#TODO: make the player be able to enter veicles and use them
+
+
 var motion:Vector2 = Vector2()
 var gravity:float = 150
 var jump_height:float = 180
@@ -95,6 +101,7 @@ func _process(delta):
 		else:
 			BA.anim_part = states.jumping_moving
 		motion.x = motion_dir.x * speed
+#		motion.x += motion_dir.x * speed * delta
 		motion.y += gravity * delta
 	#attack
 	if Input.is_action_pressed("ui_shoot"):

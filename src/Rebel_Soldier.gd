@@ -1,5 +1,5 @@
 extends KinematicBody2D
-
+#TODO: make an AI for this charcter
 
 
 
